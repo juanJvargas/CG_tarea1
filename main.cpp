@@ -18,6 +18,8 @@
 
 int filas = 0;
 int columnas = 0;
+int cols = 0;
+int fils = 0;
 
 using namespace std;
 
@@ -94,13 +96,44 @@ int ** transponerMatriz(int **matriz) {
     return matrizT;
 }
 
+int operacion(int *A, int **B, int colum, int aux) {
+    int respuesta = 0;
+    return respuesta;
+}
+//filas*columnas----fils*cols
+
 int ** productoMatriz(int **A, int **B) {
-    
+    int aux = 0;
+    int **matrizAxB = new int*[filas];
+    for (int i = 0; i < filas; i++) {
+        matrizAxB[i] = new int[cols];
+        for (int j = 0; j < cols; j++) {
+            for (int k = 0; k < columnas; k++) {
+                for (int l = 0; l < fils; l++) {
+                    aux += A[i][l] * B[k][l];
+                    printf("(%d*%d)+", A[i][l], B[k][l]);
+                    
+                }
+                    printf("=%d\n", aux);
+                    matrizAxB[i][k] = aux;
+                    aux = 0;
+
+            }
+
+
+            //matrizAxB[i][j]= operacion(A[i],B,j,0);
+
+        }
+
+
+    }
+    return matrizAxB;
 }
 
 int main(int argc, char** argv) {
     int **matriz1 = leerMatriz("matriz1.txt");
-    int aux = columnas;
+    cols = columnas;
+    fils = filas;
     printf("Matriz A=\n");
     imprimeMatriz(matriz1);
     int **matriz1T = transponerMatriz(matriz1);
@@ -112,11 +145,11 @@ int main(int argc, char** argv) {
     int **matriz2T = transponerMatriz(matriz2);
     printf("Matriz B transpuesta=\n");
     imprimeMatriz(matriz2T);
-    if (aux=filas) {
+    if (cols = filas) {
         int** matriz1x2 = productoMatriz(matriz1, matriz2);
         printf("Matriz AxB=\n");
-        imprimeMatriz(matriz1x2);    
-    }else{
+        imprimeMatriz(matriz1x2);
+    } else {
         printf("no se puede multiplicar dado qeu las columnas de A son diferentes a las columas de B");
     }
     return 0;
